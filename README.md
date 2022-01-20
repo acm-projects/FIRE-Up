@@ -1,5 +1,7 @@
 # FIRE-Up
-FIRE Up is a mobile app that allows you to work towards financial independence, tracking your progress and telling you the steps to reach your monetary goals! Enter in your retirement goals (age, spending, etc.), and FIRE Up provides users with the path to get there.
+FIRE Up is a mobile app that allows you to work towards financial independence, tracking your progress and telling you the steps to reach your monetary goals! Users enter in their retirement goals (age, spending, etc.), and FIRE Up provides them with the path to get there.
+
+FIRE = Financial Independence, Retire Early
 # MVP
 * Ability to enter in desired retirement spendings and withdrawal rate
 * Ability to enter in current age, net worth, and yearly salary
@@ -8,9 +10,22 @@ FIRE Up is a mobile app that allows you to work towards financial independence, 
 * Calculate the age at which financial independence will be reached
 * Graph user’s financial growth by year and visually show what year they will reach financial independence
 # Stretch Goals
-
+* Graphically separate the increases of out-of-pocket investments and interest earned on those investments, as seen below
+![Example](https://imguploader.net/if/ck9kIbwf1vDx.png)
+* Separate assets (stocks, bonds, cash) by allocation percentage and return percentage, then calculate FIRE output
+* Provide in-app resources, blog posts, and articles about the pros and cons (return and risk) of different asset categories by age
+* Suggest yearly spending decreases to user (“if you decrease your yearly spending by X, then you can retire Y years earlier”)
 # Tech Stack
-
+* Frontend:
+  * Figma/Adobe XD for wireframing 
+  * React Native 
+* Backend: 
+  * MongoDB 
+  * Express 
+* Dependencies: 
+  * Git Bash 
+  * Node.js 
+  * VS Code
 # Software to Install
 
 # Tutorials and Documentation
