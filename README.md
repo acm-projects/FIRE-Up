@@ -15,7 +15,10 @@ FIRE = Financial Independence, Retire Early
 * Graph user’s financial growth by year and visually show what year they will reach financial independence
 ## Stretch Goals
 * Graphically separate the increases of out-of-pocket investments and interest earned on those investments, as seen below
-![Example](https://imguploader.net/if/ck9kIbwf1vDx.png)
+<p align="center">
+<img src="https://imguploader.net/if/ck9kIbwf1vDx.png" width="550"/>
+</p>
+
 * Separate assets (stocks, bonds, cash) by allocation percentage and return percentage, then calculate FIRE output
 * Provide in-app resources, blog posts, and articles about the pros and cons (return and risk) of different asset categories by age
 * Suggest yearly spending decreases to user (“if you decrease your yearly spending by X, then you can retire Y years earlier”)
