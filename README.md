@@ -27,7 +27,7 @@ FIRE = Financial Independence, Retire Early
   * Git Bash 
   * Node.js 
   * VS Code
-# Software to Install
+# Software to Install/Resources
 * [Git](https://git-scm.com/downloads)
   * [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
 * Wireframing: 
