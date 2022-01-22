@@ -77,7 +77,7 @@ General Use
 | git push origin "branch" | Push to branch |
 | git pull origin "branch" | Pull updates from a specific branch |
 
-## Miscellaneous Resources
+## Miscellaneous Resources and Thoughts
 * [ACM’s Advice](https://docs.google.com/document/d/18Zi3DrKG5e6g5Bojr8iqxIu6VIGl86YBSFlsnJnlM88/edit) for you to be successful in ACM Projects
 * [Inflation Calculator API](https://www.statbureau.org/en/inflation-api) for more accurate inflation calculations
 
