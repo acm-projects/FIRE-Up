@@ -57,7 +57,7 @@ FIRE = Financial Independence, Retire Early
     * Used for API Calls
     * [Express tutorial with MongoDB](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs)
   * Building a REST API with MongoDB, Express, and Node.js [Tutorial](https://youtu.be/fgTGADljAeg) (very helpful for backend)
-* [MERN Stack Tutorial](https://www.youtube.com/watch?v=7CqJlxBYj-M) on YouTube
+* [MERN Stack Tutorial](https://www.youtube.com/watch?v=mrHNSanmqQ4&t=0s) on YouTube
 ## Some FIRE Calculators to Get Ideas From
 * [WalletBurst](https://walletburst.com/tools/fire-calculator/) (great UI, nicely color coded, easy to understand, and lots of options)
 * [Playing With FIRE](https://www.playingwithfire.co/retirementcalculator/) (simple but effective)
