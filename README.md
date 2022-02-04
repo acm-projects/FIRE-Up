@@ -48,7 +48,7 @@ FIRE = Financial Independence, Retire Early
   * [Documentation](https://reactnative.dev/docs/getting-started) — use for any questions you may have
   * [YouTube Tutorial](https://www.youtube.com/watch?v=Hf4MJH0jDb4) (51 minutes)
   * Potential dependencies to make UI/UX design much easier:
-    * [NativeBase](https://v2.nativebase.io/) and [Documentation](https://docs-v2.nativebase.io/)
+    * [NativeBase](https://v2.nativebase.io/), [Installation](https://docs-v2.nativebase.io/docs/GetStarted.html) and [Documentation](https://docs-v2.nativebase.io/)
     * [React Native Paper](https://reactnativepaper.com/), [Installation](https://www.npmjs.com/package/react-native-paper) and [Documentation](https://callstack.github.io/react-native-paper/index.html)
 * Backend: 
   * [MongoDB](https://www.mongodb.com/)
