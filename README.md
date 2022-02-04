@@ -49,7 +49,7 @@ FIRE = Financial Independence, Retire Early
   * [YouTube Tutorial](https://www.youtube.com/watch?v=Hf4MJH0jDb4) (51 minutes)
   * Potential dependencies to make UI/UX design much easier:
     * [NativeBase](https://v2.nativebase.io/) and [Documentation](https://docs-v2.nativebase.io/)
-    * [React Native Paper](https://reactnativepaper.com/) and [Documentation](https://callstack.github.io/react-native-paper/index.html)
+    * [React Native Paper](https://reactnativepaper.com/), [Installation](https://www.npmjs.com/package/react-native-paper) and [Documentation](https://callstack.github.io/react-native-paper/index.html)
 * Backend: 
   * [MongoDB](https://www.mongodb.com/)
     * Database which is used to store data such as age, income, annual spending, etc.
