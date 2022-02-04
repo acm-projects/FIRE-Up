@@ -50,6 +50,9 @@ FIRE = Financial Independence, Retire Early
 * Backend: 
   * [MongoDB](https://www.mongodb.com/)
     * Database which is used to store data such as age, income, annual spending, etc.
+  * [Mongoose](https://www.npmjs.com/package/mongoose)
+    * Allows you to define different types of objects for use with API Calls in relation to MongoDB
+    * [Introduction to Mongoose](https://code.tutsplus.com/articles/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527)
   * [Express.js Installation](https://expressjs.com/en/starter/installing.html) (first install Node.js)
     * Used for API Calls
     * [Express tutorial with MongoDB](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs)
