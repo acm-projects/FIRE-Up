@@ -1,0 +1,27 @@
+{
+  "name": "fire-up",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">\r <img src=\"https://github.com/acm-projects/FIRE-Up/blob/main/Bonfire.gif\" width=\"256\"/>\r </p>",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acm-projects/FIRE-Up.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acm-projects/FIRE-Up/issues"
+  },
+  "homepage": "https://github.com/acm-projects/FIRE-Up#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
