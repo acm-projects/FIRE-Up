@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const FireUser = require('../models/fire')
+const FireUser = require('../models/User')
 
 module.exports = router
 
@@ -22,6 +22,8 @@ router.get('/:id', getFireUser, (req, res) => {
 // Creating One
 router.post('/', async (req, res) => {
     const user = new FireUser ({
+        password: req.body.password,
+        email: req.body.email,
         name: req.body.name,
         age: req.body.age,
         accountBalance: req.body.accountBalance
@@ -48,6 +50,12 @@ router.patch('/:id', getFireUser, async (req, res) => {
     }
     if (req.body.accountBalance != null) {
         res.fireUser.accountBalance = req.body.accountBalance
+    }
+    if (req.body.email != null) {
+        res.fireUser.email = req.body.email
+    }
+    if (req.body.password != null) {
+        res.fireUser.password = req.body.password
     }
     try {
         const updatedFireUser = await res.fireUser.save()

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const fireSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -18,7 +18,15 @@ const fireSchema = new mongoose.Schema({
         type: Number,
         required: true,
         default: 0
+    },
+    email:{
+        type: String,
+        required: true
+    },
+    password:{
+        type: String,
+        required: true
     }
 })
 
-module.exports = mongoose.model('Fire', fireSchema)
+module.exports = mongoose.model('User', UserSchema)

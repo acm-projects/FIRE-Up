@@ -9,9 +9,11 @@ POST http://localhost:3000/fireup
 Content-Type: application/json
 
 {
-    "name": "Naveen",
-    "age": 18,
-    "accountBalance": 1000
+    "name": "Test User",
+    "age": 19,
+    "accountBalance": 1000,
+    "email": "test@acm.com",
+    "password": "password"
 }
 
 ###
@@ -20,9 +22,9 @@ DELETE http://localhost:3000/fireup/620f413416444a1efafb9bb9
 
 ###
 
-PATCH http://localhost:3000/fireup/620f49387af4308a7b2af9c3
+PATCH http://localhost:3000/fireup/621534c21d3db19f9db23fa5
 Content-Type: application/json
 
 {
-    "name": "New Name"
+    "name": "New Jana"
 }

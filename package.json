@@ -4,7 +4,8 @@
   "description": "<p align=\"center\">\r <img src=\"https://github.com/acm-projects/FIRE-Up/blob/main/Bonfire.gif\" width=\"256\"/>\r </p>",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/acm-projects/FIRE-Up#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^4.17.3",
     "mongoose": "^6.2.2"
   },
