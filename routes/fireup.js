@@ -24,7 +24,9 @@ router.post('/', async (req, res) => {
     const user = new FireUser ({
         name: req.body.name,
         age: req.body.age,
-        accountBalance: req.body.accountBalance
+        accountBalance: req.body.accountBalance,
+        email: req.body.email
+        // include new JoinDate for Current Date
     })
 
     try {
@@ -49,6 +51,7 @@ router.patch('/:id', getFireUser, async (req, res) => {
     if (req.body.accountBalance != null) {
         res.fireUser.accountBalance = req.body.accountBalance
     }
+
     try {
         const updatedFireUser = await res.fireUser.save()
         res.json(updatedFireUser)
