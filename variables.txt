@@ -1,0 +1,28 @@
+Variable:
+
+targetYear, targetGoal, withdrawalRate, interestRate, annualIncome, annualExpense, annualProfit, retirementSpending, retirementYears
+
+
+Default Values:
+retirementYears: 25
+interestRate: 7
+withdrawalRate: 4
+Calculations:
+annualProfit = annualIncome - annualExpense
+retirementTotal = retirementSpending * retirementYears
+
+
+// 
+annualSavings = arraylist {
+    moneySaved = accountBalance;
+    arraylist.push(moneySaved);
+    while (moneySaved < retirementTotal) {
+        moneySaved *= 1 + interestRate / 100;
+        arraylist.push(moneySaved);
+    }
+
+    numberOfYears = arraylist.length() - 1;
+
+    ageOfRetirement = currentAge + numberOfYears;
+}
+

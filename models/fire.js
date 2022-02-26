@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const fireSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -18,7 +18,12 @@ const fireSchema = new mongoose.Schema({
         type: Number,
         required: true,
         default: 0
+    },
+    moneyUpdates: {
+        type: Schema,
+        required: true
+
     }
 })
 
-module.exports = mongoose.model('Fire', fireSchema)
+module.exports = mongoose.model('Fire', userSchema)
