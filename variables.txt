@@ -16,13 +16,21 @@ retirementTotal = retirementSpending * retirementYears
 annualSavings = arraylist {
     moneySaved = accountBalance;
     arraylist.push(moneySaved);
-    while (moneySaved < retirementTotal) {
+
+    for (int i = 0; i < targetYear; i++) {
         moneySaved *= 1 + interestRate / 100;
+        moneySaved += annualProfit;
         arraylist.push(moneySaved);
     }
-
-    numberOfYears = arraylist.length() - 1;
-
-    ageOfRetirement = currentAge + numberOfYears;
+    
+    return arraylist;
 }
 
+
+assets = array[2.3, 3.6, 9.0] 
+
+interest = [7, 4, 8]
+
+money = assets * (1 + interests/100)
+
+money = [2.461, 3.744, 9.72]
