@@ -1,8 +1,10 @@
 import React from 'react';
 import { Text, StyleSheet, View, TextInput, SafeAreaView, Button, Pressable } from 'react-native';
 
-const creatAccountPage = () => {
-
+const creatAccountPage1 = () => {
+  const [firstName, setFirstName] = React.useState('First Name');
+  const [lastName, setLastName] = React.useState('Last Name');
+  const [dateOfBirth, setDateOfBirth] = React.useState('Date of birth');
   return (
     <SafeAreaView style={styles.backgroundLayoutView}>
       <View style={styles.backgroundLayoutView}>
@@ -11,19 +13,22 @@ const creatAccountPage = () => {
       <View style={styles.textInputLayoutView}>
         <TextInput
             style={styles.input}
-            placeholder="First Name"
+            placeholder={firstName}
+            onChangeText={(userInputValue) => setFirstName(userInputValue)}
         />
         <TextInput
           style={styles.input}
-          placeholder="Last Name"
+          placeholder={lastName}
+          onChangeText={(userInputValue) => setLastName(userInputValue)}
         />
         <TextInput
           style={styles.input}
-          placeholder="Date of birth"
+          placeholder={dateOfBirth}
+          onChangeText={(userInputValue) => setDateOfBirth(userInputValue)}
         />
         <View style={styles.buttonLayoutView}>
-          <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Next Page</Text>
+          <Pressable style={styles.AccountCreationButton}>
+            <Text style={styles.AccountCreationButtonText}>Next Page</Text>
           </Pressable>
         </View>
       </View>
@@ -67,7 +72,7 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#fff',
   },
-  button: {
+  AccountCreationButton: {
     alignItems: 'center',
     justifyContent: 'center',
     width: 200,
@@ -81,12 +86,12 @@ const styles = StyleSheet.create({
     elevation: 3,
     backgroundColor: '#ACDEAA', 
   },
-  buttonText: {
-    fontWeight: '700',
+  AccountCreationButtonText: {
+    fontWeight: 'bold',
     fontSize: 20,
     color: 'black',
   },
 
 });
 
-export default creatAccountPage;
+export default creatAccountPage1;
