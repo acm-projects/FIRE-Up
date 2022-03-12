@@ -1,35 +1,54 @@
 import React from 'react';
-import { Text, StyleSheet, View, TextInput, SafeAreaView, Button, Pressable, Dimensions, Alert, Image, ScrollView, } from 'react-native';
-import logo from './assets/FireUpLogo.png'; 
+import { Text, StyleSheet, View, TextInput, SafeAreaView, Button, Pressable, Dimensions, Alert } from 'react-native';
+
 const creatAccountPage1 = () => {
-  const [userName, setUserName] = React.useState('Username');
-  const [password, setPassword] = React.useState('Password');
-  
+  const [amountInSavingsAccount, setAmountInSavingsAccount] = React.useState('Amount in Savings Account');
+  const [AmountInRothIRA, setAmountInRothIRA] = React.useState('Amount in Roth IRA');
+  const [amountIn401K, setAmountIn401K] = React.useState('Amount in 401K');
+  const [amountInInvestmentPortfolio, setAmountInInvestmentPortfolio] = React.useState('Amount in Investment Portfolio');
+  const [estimatedRealEstateValue, setEstimatedRealEstateValue] = React.useState('Estimated Real Estate Value');
+
+  const createTwoButtonAlert = () =>
+    Alert.alert('Info', 'Enter your annual income and spending!', [
+      { text: 'OK'},
+    ]);
   return (
     <SafeAreaView style={styles.backgroundLayoutView}>
-      <ScrollView>
       <View style={styles.backgroundLayoutView}>
-        <Text style={styles.headerText}>FI/RE Up!</Text> 
-        <Image source={logo} style={styles.logo} />
+        <Text style={styles.headerText}>Create an account!</Text> 
+        <Pressable 
+          style={styles.HelpButton}
+          onPress={createTwoButtonAlert}>
+            <Text style={styles.HelpButtonText}>i</Text></Pressable>
         <TextInput
             style={styles.input}
-            placeholder={'Enter your Email'}
-            onChangeText={(userInputValue) => setUserName(userInputValue)}
+            placeholder={'Amount in Savings Account'}
+            onChangeText={(userInputValue) => setAmountInSavingsAccount(userInputValue)}
         />
         <TextInput
             style={styles.input}
-            placeholder={'Enter your Password'}
-            onChangeText={(userInputValue) => setPassword(userInputValue)}
-            secureTextEntry={true}
+            placeholder={'Amount in your Roth IRA'}
+            onChangeText={(userInputValue) => setAmountInRothIRA(userInputValue)}
+        />
+        <TextInput
+            style={styles.input}
+            placeholder={'Amount in your 401K'}
+            onChangeText={(userInputValue) => setAmountIn401K(userInputValue)}
+        />
+        <TextInput
+            style={styles.input}
+            placeholder={'Amount in your Investment Portfolio'}
+            onChangeText={(userInputValue) => setAmountInInvestmentPortfolio(userInputValue)}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder={'Estimated Real Estate Value'}
+          onChangeText={(userInputValue) => setEstimatedRealEstateValue(userInputValue)}
         />
         <Pressable style={styles.AccountCreationButton}>
-            <Text style={styles.AccountCreationButtonText}>Login</Text>
-        </Pressable>
-        <Pressable style={styles.SignUpButton}>
-            <Text style={styles.AccountCreationButtonText}>Sign Up</Text>
+            <Text style={styles.AccountCreationButtonText}>Next Page</Text>
         </Pressable>
       </View>
-      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -43,12 +62,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#00081E',
     top: 100
-  },
-  logo: {
-    width: 200,
-    height: 200,
-    margin: 50,
-    alignSelf: 'center',
   },
   headerText: {
     fontWeight: '800',
@@ -88,22 +101,6 @@ const styles = StyleSheet.create({
     elevation: 3,
     backgroundColor: '#ACDEAA', 
     marginTop: 50,
-    alignSelf: 'center'
-  },
-  SignUpButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 200,
-    height: 50,
-    borderRadius: 4,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-    borderColor: 'white',
-    elevation: 3,
-    backgroundColor: 'white', 
-    marginTop: 10,
     alignSelf: 'center'
   },
   AccountCreationButtonText: {

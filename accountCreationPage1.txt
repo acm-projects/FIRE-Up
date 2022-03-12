@@ -1,0 +1,93 @@
+import React from 'react';
+import { Text, StyleSheet, View, TextInput, SafeAreaView, Button, Pressable, Dimensions } from 'react-native';
+
+const creatAccountPage1 = () => {
+  const [firstName, setFirstName] = React.useState('First Name');
+  const [lastName, setLastName] = React.useState('Last Name');
+  const [dateOfBirth, setDateOfBirth] = React.useState('Date of birth');
+  return (
+    <SafeAreaView style={styles.backgroundLayoutView}>
+      <View style={styles.backgroundLayoutView}>
+        <Text style={styles.headerText}>Create an account!</Text>
+        <TextInput
+            style={styles.input}
+            placeholder={'First Name'}
+            onChangeText={(userInputValue) => setFirstName(userInputValue)}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder={'Last Name'}
+          onChangeText={(userInputValue) => setLastName(userInputValue)}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder={'Date of birth'}
+          onChangeText={(userInputValue) => setDateOfBirth(userInputValue)}
+        />
+        <Pressable style={styles.AccountCreationButton}>
+            <Text style={styles.AccountCreationButtonText}>Next Page</Text>
+        </Pressable>
+      </View>
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  backgroundLayoutView: {
+    flex: 1,
+    backgroundColor: '#00081E'
+  },
+  buttonLayoutView: {
+    alignItems: 'center',
+    backgroundColor: '#00081E',
+    top: 100
+  },
+  headerText: {
+    fontWeight: '800',
+    fontSize: 26,
+    color: '#F2EFEA',
+    marginTop: 30,
+    marginLeft: "5%",
+    marginBottom: 30
+    },
+  input: {
+    alignSelf: 'center',
+    height: 50,
+    width: "93%",
+    margin: 12,
+    color: '#000000',
+    borderWidth: 4,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    borderColor: '#fff',
+    padding: 10,
+    paddingLeft: 20,
+    backgroundColor: '#fff',
+  },
+  AccountCreationButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 200,
+    height: 50,
+    borderRadius: 4,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    borderColor: '#ACDEAA',
+    elevation: 3,
+    backgroundColor: '#ACDEAA', 
+    marginTop: 50,
+    alignSelf: 'center'
+  },
+  AccountCreationButtonText: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: 'black',
+  },
+
+});
+
+export default creatAccountPage1;
