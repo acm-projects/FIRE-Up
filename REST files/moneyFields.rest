@@ -2,7 +2,7 @@ GET http://localhost:3000/moneyUpdates
 
 ###
 
-GET http://localhost:3000/moneyUpdates/YOUR_ID_HERE
+GET http://localhost:3000/moneyUpdates/622c00c6738cd7ea8ba721e0
 
 ###
 POST http://localhost:3000/moneyUpdates
@@ -14,12 +14,13 @@ Content-Type: application/json
     "withdrawalRate": 40000,
     "interestRate": 7,
     "annualIncome": 80000,
-    "annualExpense": 50000
+    "annualExpense": 50000,
+    "username": "622c147ff06267c78ef9041f"
 }
 
 ###
 
-DELETE http://localhost:3000/moneyUpdates/YOUR_ID_HERE
+DELETE http://localhost:3000/moneyUpdates/622c1417d522800736298839
 
 ###
 

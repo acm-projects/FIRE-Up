@@ -4,16 +4,17 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 
-mongoose.connect(process.env.DATABASE_NAVEEN_URL, {useNewUrlParser: true})
+//use TESTING_URL for tests, FIREUP_URL for actual deployment
+mongoose.connect(process.env.TESTING_URL, {useNewUrlParser: true})
 const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Database'))
 
 app.use(express.json())
 
-const fireRouter = require('./routes/fireup')
-const moneyRouter = require('./routes/moneyUpdates')
-app.use('/fireup', fireRouter) // this could be /fire or /fireup, need to learn which
+const userRouter = require('./routes/userRoute')
+const moneyRouter = require('./routes/moneyRoute')
+app.use('/users', userRouter)
 app.use('/moneyUpdates', moneyRouter)
 
 app.listen(3000, () => console.log('Server Started'))

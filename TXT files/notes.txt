@@ -1,0 +1,9 @@
+// targetAge, targetGoal, withdrawalRate, interestRate, annualIncome, annualExpense, netWorth, userAccount
+// things to calculate:
+
+/*
+calculate:
+projected net worth every year
+what year they reach financial independence 
+annualProfit from annualExpense and annualIncome -- DONE
+*/

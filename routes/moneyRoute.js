@@ -27,13 +27,14 @@ router.get('/:id', getMoneyData, (req, res) => {
 // Creating One
 router.post('/', async (req, res) => {
     const userMoney = new MoneyModel ({
-        targetYear: req.body.targetYear,
+        targetAge: req.body.targetAge,
         targetGoal: req.body.targetGoal,
         withdrawalRate: req.body.withdrawalRate,
         interestRate: req.body.interestRate,
         annualIncome: req.body.annualIncome,
         annualExpense: req.body.annualExpense,
-        annualProfit: req.body.annualProfit,
+        netWorth: req.body.netWorth,
+        username: req.body.username
     })
 
     try {
@@ -46,8 +47,8 @@ router.post('/', async (req, res) => {
 
 // Updating One
 router.patch('/:id', getMoneyData, async (req, res) => {
-    if (req.body.targetYear != null) {
-        res.moneyInput.targetYear = req.body.targetYear
+    if (req.body.targetAge != null) {
+        res.moneyInput.targetAge = req.body.targetAge
     }
     if (req.body.targetGoal != null) {
         res.moneyInput.targetGoal = req.body.targetGoal
@@ -60,14 +61,15 @@ router.patch('/:id', getMoneyData, async (req, res) => {
     }
     if (req.body.annualIncome != null) {
         res.moneyInput.annualIncome = req.body.annualIncome
-        res.moneyInput.annualProfit = res.body.annualIncome - res.body.annualExpense
     }
     if (req.body.annualExpense != null) {
         res.moneyInput.annualExpense = req.body.annualExpense
-        res.moneyInput.annualProfit = res.body.annualIncome - res.body.annualExpense
     }
-    if (req.body.annualProfit != null) {
-        res.moneyInput.annualProfit = req.body.annualProfit
+    if (req.body.netWorth != null) {
+        res.moneyInput.netWorth = req.body.netWorth
+    }
+    if (req.body.username != null) {
+        res.moneyInput.username = req.body.username
     }
     try {
         const updatedMoneyData = await res.moneyInput.save()
@@ -102,3 +104,4 @@ async function getMoneyData(req, res, next) {
     res.moneyInput = moneyInput
     next()
 }
+
