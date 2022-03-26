@@ -12,5 +12,5 @@ db.once('open', () => console.log('Connected to Database'))
 app.use(express.json())
 
 const fireRouter = require('./routes/UserRoute')
-app.use('/fireup', fireRouter) // this could be /fire or /fireup, need to learn which
+app.use('/', fireRouter) // this could be /fire or /fireup, need to learn which
 app.listen(3000, () => console.log('Server Started'))
