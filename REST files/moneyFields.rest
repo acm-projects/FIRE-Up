@@ -1,4 +1,4 @@
-GET http://localhost:3000/moneyUpdates
+GET http://localhost:3000/money
 
 ###
 
@@ -9,13 +9,14 @@ POST http://localhost:3000/moneyUpdates
 Content-Type: application/json
 
 {
-    "targetYear": 2080,
+    "User": "624741a2c2343ffdd0c20589",
+    "targetAge": 65,
     "targetGoal": 1000000,
-    "withdrawalRate": 40000,
-    "interestRate": 7,
-    "annualIncome": 80000,
-    "annualExpense": 50000,
-    "username": "622c147ff06267c78ef9041f"
+    "annualIncome": 200000,
+    "annualExpense": 100000,
+    "initStocks": 80000,
+    "initBonds": 50000,
+    "initCash": 100000
 }
 
 ###

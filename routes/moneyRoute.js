@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const Money = require('../models/money')
-
 module.exports = router
 
 // List of fields: 
@@ -16,15 +15,18 @@ router.get('/', async (req, res) => {
     catch (err) {
         res.status(500).json({ message: err.message })
     }
-})
+});
 
 // Getting One
 router.get('/:id', getMoneyData, (req, res) => {
     res.json(res.moneyInput)
-})
+});
+
+
 
 // Creating One
 router.post('/', async (req, res) => {
+    // find way to get age
     const userMoney = new Money ({
         User: req.body.User,
         targetAge: req.body.targetAge,
@@ -35,6 +37,8 @@ router.post('/', async (req, res) => {
         initBonds: req.body.initBonds,
         initCash: req.body.initCash
     })
+
+
 
     try {
         const newMoneyData = await userMoney.save()
@@ -49,8 +53,8 @@ router.patch('/:id', getMoneyData, async (req, res) => {
     if (req.body.User != null) {
         res.moneyInput.User = req.body.User
     }
-    if (req.body.Returns != null) {
-        res.moneyInput.Returns = req.body.Returns
+    if (req.body.age != null) {
+        res.moneyInput.age = req.body.age
     }
     if (req.body.targetAge != null) {
         res.moneyInput.targetAge = req.body.targetAge

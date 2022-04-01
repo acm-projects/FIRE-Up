@@ -75,9 +75,6 @@ router.patch('/:id', getUser, async (req, res) => {
     if (req.body.joinDate != null) {
         res.user.joinDate = req.body.joinDate
     }
-    if (req.body.accountBalance != null) {
-        res.user.accountBalance = req.body.accountBalance
-    }
     if (req.body.age != null) {
         res.user.age = req.body.age
     }

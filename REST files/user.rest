@@ -5,7 +5,7 @@ GET http://localhost:3000/users
 GET http://localhost:3000/users/622c147ff06267c78ef9041f
 
 ### 
-POST http://localhost:3000/users Content-Type: application/json
+POST http://localhost:3000/users/add Content-Type: application/json
 
 {
 "name": "Test User", "email": "test@acm.com", "password": "password", "age": 18
