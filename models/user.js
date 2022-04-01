@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt')
 
 const User = new mongoose.Schema({
     Money: mongoose.Schema.Types.ObjectId,
-    Returns: mongoose.Schema.Types.ObjectId,
     name: {
         type: String,
         required: true
