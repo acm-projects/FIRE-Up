@@ -1,40 +1,44 @@
 const express = require('express')
 const router = express.Router()
-const MoneyModel = require('../models/money')
-
+const Money = require('../models/money')
 module.exports = router
 
 // List of fields: 
-// targetYear, targetGoal, withdrawalRate, interestRate, annualIncome, annualExpense, annualProfit
 
 // Getting All
 router.get('/', async (req, res) => {
     try {
-        const moneyData = await MoneyModel.find()
+        const moneyData = await Money.find()
         res.json(moneyData)
     } 
     
     catch (err) {
         res.status(500).json({ message: err.message })
     }
-})
+});
 
 // Getting One
 router.get('/:id', getMoneyData, (req, res) => {
     res.json(res.moneyInput)
-})
+});
+
+
 
 // Creating One
 router.post('/', async (req, res) => {
-    const userMoney = new MoneyModel ({
-        targetYear: req.body.targetYear,
+    // find way to get age
+    const userMoney = new Money ({
+        User: req.body.User,
+        targetAge: req.body.targetAge,
         targetGoal: req.body.targetGoal,
-        withdrawalRate: req.body.withdrawalRate,
-        interestRate: req.body.interestRate,
         annualIncome: req.body.annualIncome,
         annualExpense: req.body.annualExpense,
-        annualProfit: req.body.annualProfit,
+        initStocks: req.body.initStocks,
+        initBonds: req.body.initBonds,
+        initCash: req.body.initCash
     })
+
+
 
     try {
         const newMoneyData = await userMoney.save()
@@ -46,28 +50,32 @@ router.post('/', async (req, res) => {
 
 // Updating One
 router.patch('/:id', getMoneyData, async (req, res) => {
-    if (req.body.targetYear != null) {
-        res.moneyInput.targetYear = req.body.targetYear
+    if (req.body.User != null) {
+        res.moneyInput.User = req.body.User
+    }
+    if (req.body.age != null) {
+        res.moneyInput.age = req.body.age
+    }
+    if (req.body.targetAge != null) {
+        res.moneyInput.targetAge = req.body.targetAge
     }
     if (req.body.targetGoal != null) {
         res.moneyInput.targetGoal = req.body.targetGoal
     }
-    if (req.body.withdrawalRate != null) {
-        res.moneyInput.withdrawalRate = req.body.withdrawalRate
-    }
-    if (req.body.interestRate != null) {
-        res.moneyInput.interestRate = req.body.interestRate
-    }
     if (req.body.annualIncome != null) {
         res.moneyInput.annualIncome = req.body.annualIncome
-        res.moneyInput.annualProfit = res.body.annualIncome - res.body.annualExpense
     }
     if (req.body.annualExpense != null) {
         res.moneyInput.annualExpense = req.body.annualExpense
-        res.moneyInput.annualProfit = res.body.annualIncome - res.body.annualExpense
     }
-    if (req.body.annualProfit != null) {
-        res.moneyInput.annualProfit = req.body.annualProfit
+    if (req.body.initStocks != null) {
+        res.moneyInput.initStocks = req.body.initStocks
+    }
+    if (req.body.initBonds != null) {
+        res.moneyInput.initBonds = req.body.initBonds
+    }
+    if (req.body.initCash != null) {
+        res.moneyInput.initCash = req.body.initCash
     }
     try {
         const updatedMoneyData = await res.moneyInput.save()
@@ -91,7 +99,7 @@ async function getMoneyData(req, res, next) {
     let moneyInput
     try {
         objectId = req.params.id
-        moneyInput = await MoneyModel.findById(objectId)
+        moneyInput = await Money.findById(objectId)
         if (moneyInput == null) {
             return res.status(404).json({ message: 'Cannot find user' })
         }
@@ -102,3 +110,4 @@ async function getMoneyData(req, res, next) {
     res.moneyInput = moneyInput
     next()
 }
+
