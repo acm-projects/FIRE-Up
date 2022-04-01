@@ -5,7 +5,7 @@ const app = express()
 const mongoose = require('mongoose')
 
 //use TESTING_URL for tests, FIREUP_URL for actual deployment
-mongoose.connect(process.env.MULTIPLE_URL, {useNewUrlParser: true})
+mongoose.connect(process.env.FIREUP_URL, {useNewUrlParser: true})
 const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Database'))
