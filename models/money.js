@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const User = require('./user');
+const Returns = require('./returns')
 
-// break up netWorth into netWorth, stocks, bonds, cash, 
-
-const moneySchema = new mongoose.Schema({
+// break up netWorth into netWorth, stocks, bonds, cash,
+const Money = new mongoose.Schema({
+    User: mongoose.Schema.Types.ObjectId,
+    Returns: mongoose.Schema.Types.ObjectId,
     targetAge: { // retirement age
         type: Number,
         required: false
@@ -12,16 +14,6 @@ const moneySchema = new mongoose.Schema({
     targetGoal: { // goal for netWorth over time
         type: Number,
         required: false
-    },
-    withdrawalRate: {  // in percent
-        type: Number,
-        required: false,
-        default: 4
-    },
-    interestRate: {  // in percent
-        type: Number,
-        required: false,
-        default: 7
     },
     annualIncome: {
         type: Number,
@@ -33,58 +25,53 @@ const moneySchema = new mongoose.Schema({
         required: true,
         default: 0
     },
-    stocks: {
+    initStocks: {
         type: Number,
         required: false,
         default: 0
     },
-    bonds: {
+    initBonds: {
         type: Number,
         required: false,
         default: 0
     },
-    cash: {
+    initCash: {
         type: Number,
         required: false,
         default: 0
-    },
-    username: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: false,
-        default: null
-    },
-    returns: {
-        type: mongoose.Schema.Types.ObjectId,
-
     }
+    
 })
+
+Money.methods.annualProfit = async function() {
+    const profit = await this.annualIncome - annualExpense;
+    return profit;
+}
+
+Money.methods.netWorth = async function() {
+    const assets = await this.stocks + this.bonds + this.cash;
+    return assets;
+}
+
 
 // returns annual profit
-moneySchema.virtual('annualProfit').get(function() {
-    return this.annualIncome - this.annualExpense;
-})
-
-moneySchema.virtual('netWorth').get(function() {
-    return this.stocks + this.bonds + this.cash;
-})
-
 // calculates array based on investing profit each year
 // TODO: integrate with User database to calculate based on age up to 100
-moneySchema.virtual('arrayInterest').get(function(asset, startingValue, interestRate, profit = this.annualProfit, numYears = this.targetAge) {
+Money.methods.arrayInterest = async function(asset, startingValue, interestRate, profit = this.annualProfit, numYears = this.targetAge) {
     const assetWorth = [asset, startingValue];
     for (let i = 1; i <= numYears; i++) {
         assetWorth.push(assetWorth[i] * (1 + interestRate / 100) + profit);
     }
 
     return assetWorth;
+}
+
+
+Money.virtual('YearsToFIRE').get(function() {
+    
 })
 
-moneySchema.virtual('YearsToFIRE').get(function() {
-    const moneyList[[]]
-})
-
-moneySchema.virtual('matrixInvesting').get(function(numYears = this.targetAge, 
+Money.virtual('matrixInvesting').get(function(numYears = this.targetAge, 
                                                    stocks = this.stocks, bonds = this.bonds, cash = this.cash,
                                                    profit = this.annualProfit) {
     // potentially include limit of numYears up to 100
@@ -102,21 +89,4 @@ moneySchema.virtual('matrixInvesting').get(function(numYears = this.targetAge,
     return assetList;
 })
 
-
-
-
-// calculate how much money is made from investing Profit over numYears
-moneySchema.methods.neededProfitPerYear = function(numYears, profit) {
-    return this.arrayInvesting.
-    moneySaved = this.netWorth;
-
-    for (let i = 0; i < numYears; i++) {
-        moneySaved *= 1 + this.interestRate / 100;
-        moneySaved += profit;
-    }
-
-    return moneySaved;
-}
-
-
-module.exports = mongoose.model('Money', moneySchema)
+module.exports = mongoose.model('Money', Money)
