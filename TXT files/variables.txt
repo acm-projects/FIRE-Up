@@ -1,7 +1,19 @@
 Variable:
 
 targetYear, targetGoal, withdrawalRate, interestRate, annualIncome, annualExpense, annualProfit, retirementSpending, retirementYears
-
+MoneySchema: targetAge, targetGoal, annualIncome, annualExpense, initStocks, initBonds, initCash, user, returns
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: false,
+        default: null
+    },
+    returns: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Returns',
+        required: false,
+        default: null
+    }
 
 Default Values:
 retirementYears: 25

@@ -1,21 +1,60 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const moneySchema = require('./money');
+const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
 
-const userSchema = new mongoose.Schema({
-    name: { 
+const User = new mongoose.Schema({
+    Money: mongoose.Schema.Types.ObjectId,
+    Returns: mongoose.Schema.Types.ObjectId,
+    name: {
         type: String,
-        required: false
+        required: true
+    },
+    email:{
+        type: String,
+        required: true,
+        unique: true,
+        lowercase: true,
+        trim: true
+    },
+    password:{
+        type: String,
+        minlength: 5,
+        require: true
     },
     age: {
         type: Number,
-        required: true,
-        default: 18   
+        min: 13,
+        required: true
     },
-    accountBalance: {
-        type: Number,
-        required: false
+    joinDate: {
+        type: Date,
+        default: Date.now,
+        immutable: true
     }
+
 })
 
-module.exports = mongoose.model('User', userSchema)
+// Encrypts passowrd
+User.pre('save', async function(next){
+    
+    if(!this.isModified('password')) next()
+    this.password = await bcrypt.hash(this.password, 10)
+    next()
+})
+
+// Checks password entered with the encrypted passowrd 
+// Will be used when we get to logging in users to our app
+User.methods.checkPassword = async function(password){
+    const result = await bcrypt.compare(password, this.password)
+    return result
+}
+
+//email validation
+User.path('email').validate(async (email) => {
+    const emailCount = await mongoose.models.User.countDocuments({email})
+
+    return !emailCount
+
+})
+
+
+module.exports = mongoose.model('User', User)

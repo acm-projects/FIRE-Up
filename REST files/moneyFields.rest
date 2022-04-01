@@ -20,7 +20,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/moneyUpdates/622c1417d522800736298839
+DELETE http://localhost:3000/moneyUpdates/622c1493f06267c78ef90421
 
 ###
 
