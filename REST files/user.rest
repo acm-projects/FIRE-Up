@@ -1,0 +1,24 @@
+GET http://localhost:3000/users
+
+###
+
+GET http://localhost:3000/users/622c147ff06267c78ef9041f
+
+### 
+POST http://localhost:3000/users/add Content-Type: application/json
+
+{
+"name": "Test User", "email": "test@acm.com", "password": "password", "age": 18
+}
+
+###
+
+DELETE http://localhost:3000/users/622c147ff06267c78ef9041f
+
+###
+
+PATCH http://localhost:3000/users/621534c21d3db19f9db23fa5 Content-Type: application/json
+
+{
+"name": "New Jana"
+}
