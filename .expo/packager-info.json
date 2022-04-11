@@ -1,0 +1,10 @@
+{
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19000,
+  "expoServerNgrokUrl": "https://v4-vze.anonymous.fire-up-application.exp.direct",
+  "packagerNgrokUrl": "https://v4-vze.anonymous.fire-up-application.exp.direct",
+  "ngrokPid": 26924,
+  "packagerPid": null,
+  "webpackServerPort": null
+}
