@@ -90,9 +90,9 @@ Money.pre('save', async function(next) {
     const bondsArr = await this.arrayInterest(50000, 2, 0);
     const cashArr = await this.arrayInterest(30000, 0, 0);
 
-    const netWorth = [];
+    const netWorthArr = [];
     for (let i = 0; i < 100; i++) {
-        netWorth.push(stocksArr[i] + bondsArr[i] + cashArr[i]);
+        netWorthArr.push(stocksArr[i] + bondsArr[i] + cashArr[i]);
     }
 
     console.log(ageArr);
@@ -105,7 +105,7 @@ Money.pre('save', async function(next) {
     this.stocksArr = stocksArr;
     this.bondsArr = bondsArr;
     this.cashArr = cashArr;
-    this.netWorth = netWorth;
+    this.netWorthArr = netWorthArr;
 
     next()
 })
