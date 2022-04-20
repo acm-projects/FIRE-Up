@@ -1,6 +1,44 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
+    cardViewOne: {
+        width:Dimensions.get('window').width*0.90, // from react-native
+        //height: 150,
+        padding: 20,
+        backgroundColor: '#F2EFEA',
+        alignItems: 'center',
+        alignSelf: "center",
+        borderRadius: 16,
+        justifyContent: 'space-evenly',
+        marginVertical: 8,
+    },
+    cardViewTwo: {
+        width:Dimensions.get('window').width*0.9, // from react-native
+        height: 150,
+        backgroundColor: '#DF604F',
+        alignItems: 'center',
+        alignSelf: "center",
+        borderRadius: 16,
+        marginVertical: 8,
+    },
+    outerView: {
+        width:Dimensions.get('window').width*0.9, // from react-native
+        flexDirection:"column",
+        alignItems: 'center',
+        alignSelf: "center",
+        justifyContent: 'space-evenly',
+    },
+    boldText: {
+        fontWeight: "bold",
+        fontSize: 25,
+        color: '#00081E',
+    },
+    boldNum: {
+        marginTop: 10,
+        fontWeight: "900",
+        fontSize: 30,
+        color: '#DF604F',
+    },
     backgroundLayoutView: {
         flex: 1,
         backgroundColor: '#00081E'
@@ -16,6 +54,20 @@ export const styles = StyleSheet.create({
         margin: 50,
         alignSelf: 'center',
         resizeMode:"cover",
+    },
+    headerMainText: {
+        fontWeight: '800',
+        fontSize: 26,
+        color: '#F2EFEA',
+        marginTop: 5,
+        marginLeft: "5%",
+        marginVertical: 8,
+    },
+    headerNum: {
+        marginTop: 10,
+        fontWeight: "900",
+        fontSize: 26,
+        color: '#ACDEAA',
     },
     headerText: {
         fontWeight: '800',
@@ -106,7 +158,6 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         alignSelf: "center",
         bottom: 70,
-
     },
     NavBar: {
         flexDirection: "row",

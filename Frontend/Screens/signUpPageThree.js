@@ -13,7 +13,7 @@ const SignUpPageThree = ({navigation}) => {
     const [estimatedRealEstateValue, setEstimatedRealEstateValue] = React.useState('Estimated Real Estate Value');
 
     const createTwoButtonAlert = () =>
-        Alert.alert('Info', 'Enter your annual income and spending!', [
+        Alert.alert('Info', 'Enter your:\nAmount in your savings account\nAmount in your Roth IRA\nAmount in your 401k\nAmount invested in stocks and bonds\nAmount invested in real estate!', [
             { text: 'OK'},
         ]);
     return(

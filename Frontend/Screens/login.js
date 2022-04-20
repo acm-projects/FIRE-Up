@@ -5,9 +5,15 @@ import {
     styles
 } from './../Styles/styles'
 
+import axios from 'axios';
+
 const Login = ({navigation}) => {
     const [userName, setUserName] = React.useState('Username');
     const [password, setPassword] = React.useState('Password');
+
+    const handleLogin = (credentials) => {
+        const url = 'http://localhost:3000'
+    }
     return(
         <SafeAreaView style={styles.backgroundLayoutView}>
             <ScrollView>

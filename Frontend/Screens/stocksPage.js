@@ -17,7 +17,6 @@ const StocksPage = ({navigation}) => {
     return(
         <SafeAreaView style={styles.backgroundLayoutView}>
             <View style={styles.backgroundLayoutView}>
-                <Text style={styles.headerText}>FI/RE Up!</Text>
                 <LineChart
                     data={{
                         labels: ['January', 'February', 'March', 'April', 'May', 'June'],
