@@ -4,18 +4,21 @@ const User = require('./user');
 
 // break up netWorth into netWorth, stocks, bonds, cash,
 const Money = new mongoose.Schema({
-    User: mongoose.Schema.Types.ObjectId,
-    age: {
-        type: Number,
-        required: false
+    User: {
+        type: mongoose.Schema.Types.ObjectId
     },
-    targetAge: { // retirement age
+    age: {
         type: Number,
         required: false
     },
     targetGoal: { // goal for netWorth over time
         type: Number,
         required: false
+    },
+    FI_Number: {
+        type: Number,
+        required: false,
+        default: 0,
     },
     annualIncome: {
         type: Number,
@@ -85,21 +88,19 @@ Money.pre('save', async function(next) {
     const userId = this.User
     const user = await User.findById(userId);
 
-    const ageArr = this.retAgeArray();
-    const stocksArr =  await this.arrayInterest(100000, 7, 2000);
-    const bondsArr = await this.arrayInterest(50000, 2, 0);
-    const cashArr = await this.arrayInterest(30000, 0, 0);
+    const age = this.age;
+    const ageArr = await this.retAgeArray(25);
+    const profit = await this.annualProfit();
+    const stocksArr =  await this.arrayInterest(age, this.initStocks, 7, profit);
+    const bondsArr = await this.arrayInterest(age, this.initBonds, 2, 0);
+    const cashArr = await this.arrayInterest(age, this.initCash, 0, 0);
 
     const netWorthArr = [];
-    for (let i = 0; i < 100; i++) {
-        netWorthArr.push(stocksArr[i] + bondsArr[i] + cashArr[i]);
+    for (let i = age; i < 100; i++) {
+        const newValue = stocksArr[i - age] + bondsArr[i - age] + cashArr[i - age]
+        netWorthArr.push(Math.round((newValue + Number.EPSILON) * 100) / 100);
     }
-
-    console.log(ageArr);
-    console.log(stocksArr);
-    console.log(bondsArr);
-    console.log(cashArr);
-    console.log(netWorthArr);
+    
     
     this.ageArr = ageArr;
     this.stocksArr = stocksArr;
@@ -107,12 +108,20 @@ Money.pre('save', async function(next) {
     this.cashArr = cashArr;
     this.netWorthArr = netWorthArr;
 
+    const expense = await this.annualExpense;
+    this.targetGoal = 25 * expense;
+
+    const fi = await this.FI();
+    this.FI_Number = fi;
     next()
 })
 
 // create array [age, age + 1, age + 2, ..., 100]
-Money.methods.retAgeArray = async function() {
-    const arr = Array.from({length: 100}, (_, index) => index)
+Money.methods.retAgeArray = async function(age) {
+    const arr = []
+    for (let i = age; i < 100; i++) {
+        arr.push(i);
+    }
     return arr;
 }
 
@@ -123,15 +132,37 @@ Money.methods.annualProfit = async function() {
 
 // calculates array based on investing profit each year
 // returns array of 100 values 
-Money.methods.arrayInterest = async function(startingValue, interestRate, profit = this.annualProfit) {
+Money.methods.arrayInterest = async function(age, startingValue, interestRate, profit) {
     const assetWorth = [startingValue];
-
-    for (let i = 1; i < 100; i++) {
-        assetWorth.push(assetWorth[i-1] * (1 + interestRate / 100) + profit);
+    
+    for (let i = age + 1; i < 100; i++) {
+        const num = assetWorth[i - age - 1] * (1 + interestRate / 100) + profit
+        assetWorth.push(Math.round((num + Number.EPSILON) * 100) / 100);
     }
 
     return assetWorth;
 }
 
-
+Money.methods.FI = async function() {
+    age = await this.age;
+    nwArr = await this.netWorthArr;
+    len = nwArr.length
+    i = 0
+    goal = await this.targetGoal
+    console.log("Age: ", age)
+    console.log("Array: ", nwArr)
+    console.log("Length: ", len)
+    console.log("Goal: ", goal)
+    while (nwArr[i] < goal && i < len) {
+        i++;
+    }
+    console.log("I: ", i)
+    FIAge = age + i;
+    if (FIAge > 65) {
+        return -999;
+    }
+    else {
+        return i;
+    }
+}
 module.exports = mongoose.model('Money', Money)

@@ -11,7 +11,6 @@ Content-Type: application/json
 {
     "User": "624741a2c2343ffdd0c20589",
     "targetAge": 65,
-    "targetGoal": 1000000,
     "annualIncome": 200000,
     "annualExpense": 100000,
     "initStocks": 80000,
