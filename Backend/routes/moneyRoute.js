@@ -29,8 +29,7 @@ router.post('/', async (req, res) => {
     // find way to get age
     const userMoney = new Money ({
         User: req.body.User,
-        targetAge: req.body.targetAge,
-        targetGoal: req.body.targetGoal,
+        age: req.body.age,
         annualIncome: req.body.annualIncome,
         annualExpense: req.body.annualExpense,
         initStocks: req.body.initStocks,
@@ -55,12 +54,6 @@ router.patch('/:id', getMoneyData, async (req, res) => {
     }
     if (req.body.age != null) {
         res.moneyInput.age = req.body.age
-    }
-    if (req.body.targetAge != null) {
-        res.moneyInput.targetAge = req.body.targetAge
-    }
-    if (req.body.targetGoal != null) {
-        res.moneyInput.targetGoal = req.body.targetGoal
     }
     if (req.body.annualIncome != null) {
         res.moneyInput.annualIncome = req.body.annualIncome
