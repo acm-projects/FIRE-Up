@@ -17,5 +17,8 @@ const moneyRouter = require('./routes/moneyRoute')
 app.use('/users', userRouter)
 app.use('/money', moneyRouter)
 
+app.get('/', (req, res) => {
+    res.json({success: true, message: 'Backend JSON sent'});
+})
 
 app.listen(3000, () => console.log('Server Started'))

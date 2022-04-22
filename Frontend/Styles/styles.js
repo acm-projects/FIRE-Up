@@ -4,8 +4,8 @@ export const styles = StyleSheet.create({
     cardViewOne: {
         width:Dimensions.get('window').width*0.90, // from react-native
         //height: 150,
-        padding: 20,
-        backgroundColor: '#F2EFEA',
+        padding: 10,
+        backgroundColor: '#ACDEAA',
         alignItems: 'center',
         alignSelf: "center",
         borderRadius: 16,
@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     cardViewTwo: {
         width:Dimensions.get('window').width*0.9, // from react-native
         height: 150,
-        backgroundColor: '#DF604F',
+        backgroundColor: '#00081E',
         alignItems: 'center',
         alignSelf: "center",
         borderRadius: 16,
@@ -30,18 +30,19 @@ export const styles = StyleSheet.create({
     },
     boldText: {
         fontWeight: "bold",
-        fontSize: 25,
+        fontSize: 23,
         color: '#00081E',
     },
     boldNum: {
         marginTop: 10,
         fontWeight: "900",
         fontSize: 30,
-        color: '#DF604F',
+        color: '#ffffff',
     },
     backgroundLayoutView: {
         flex: 1,
-        backgroundColor: '#00081E'
+        backgroundColor: '#00081E',
+        height: 600,
     },
     buttonLayoutView: {
         alignItems: 'center',
