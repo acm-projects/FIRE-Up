@@ -6,14 +6,12 @@ import {
 } from './../Styles/styles'
 
 const SignUpPageThree = ({navigation}) => {
-    const [amountInSavingsAccount, setAmountInSavingsAccount] = React.useState('Amount in Savings Account');
-    const [AmountInRothIRA, setAmountInRothIRA] = React.useState('Amount in Roth IRA');
-    const [amountIn401K, setAmountIn401K] = React.useState('Amount in 401K');
-    const [amountInInvestmentPortfolio, setAmountInInvestmentPortfolio] = React.useState('Amount in Investment Portfolio');
-    const [estimatedRealEstateValue, setEstimatedRealEstateValue] = React.useState('Estimated Real Estate Value');
+    const [stocks, setStocks] = React.useState('Amount in Savings Account');
+    const [bonds, setBonds] = React.useState('Amount in Roth IRA');
+    const [cash, setCash] = React.useState('Amount in 401K');
 
     const createTwoButtonAlert = () =>
-        Alert.alert('Info', 'Enter your:\nAmount in your savings account\nAmount in your Roth IRA\nAmount in your 401k\nAmount invested in stocks and bonds\nAmount invested in real estate!', [
+        Alert.alert('Info', 'Enter your:\nAmount in your stocks account\nAmount in your Bonds\nEstimated Cash Assets', [
             { text: 'OK'},
         ]);
     return(
@@ -26,32 +24,20 @@ const SignUpPageThree = ({navigation}) => {
                 <TextInput
                     keyboardType="numeric"
                     style={styles.input}
-                    placeholder={'Amount in Savings Account'}
-                    onChangeText={(userInputValue) => setAmountInSavingsAccount(userInputValue)}
+                    placeholder={'Estimated Stocks Value'}
+                    onChangeText={(userInputValue) => setStocks(userInputValue)}
                 />
                 <TextInput
                     style={styles.input}
                     keyboardType="numeric"
-                    placeholder={'Amount in your Roth IRA'}
-                    onChangeText={(userInputValue) => setAmountInRothIRA(userInputValue)}
+                    placeholder={'Estimated Bonds Value'}
+                    onChangeText={(userInputValue) => setBonds(userInputValue)}
                 />
                 <TextInput
                     keyboardType="numeric"
                     style={styles.input}
-                    placeholder={'Amount in your 401K'}
-                    onChangeText={(userInputValue) => setAmountIn401K(userInputValue)}
-                />
-                <TextInput
-                    keyboardType="numeric"
-                    style={styles.input}
-                    placeholder={'Amount in your Investment Portfolio'}
-                    onChangeText={(userInputValue) => setAmountInInvestmentPortfolio(userInputValue)}
-                />
-                <TextInput
-                    keyboardType="numeric"
-                    style={styles.input}
-                    placeholder={'Estimated Real Estate Value'}
-                    onChangeText={(userInputValue) => setEstimatedRealEstateValue(userInputValue)}
+                    placeholder={'Estimated Cash Value'}
+                    onChangeText={(userInputValue) => setCash(userInputValue)}
                 />
                 <Pressable style={styles.AccountCreationButton}onPressOut={() => navigation.navigate("signUpPageFour")}>
                     <Text style={styles.AccountCreationButtonText}>Next Page</Text>

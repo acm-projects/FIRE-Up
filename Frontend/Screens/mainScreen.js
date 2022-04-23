@@ -20,10 +20,14 @@ const DismissKeyboard = ({ children }) => (
     </TouchableWithoutFeedback>
 );
 const MainScreen = ({navigation}) => {
-    let startingNum = Math.random() * 100000;
+    // This is the annual spending var after retirement | the default value should be the same as annual spending now from page 3
+    const [annualSpending, setAnnualSpending] = React.useState('Annual Spending');
     let stocksStartingNum = Math.random() * 100000;
     let bondsStartingNum = Math.random() * 100000;
     let cashStartingNum = Math.random() * 100000;
+    const age = 17;
+
+    // These Arrays need to be populated
     const stocksData = [
         stocksStartingNum=100000,
         stocksStartingNum=120000,
@@ -64,6 +68,29 @@ const MainScreen = ({navigation}) => {
         startingNum=275000,
         startingNum=330000
     ]
+    const years = [
+
+    ]
+    let num;
+
+    let startingYear = 2003;
+    for (let i = age + 1; i < age + 11; i++) {
+        years.push(startingYear++);
+        num = stocksData[i - age - 1] * (1 + 7 / 100) + 100000
+        stocksData.push(Math.round((num + Number.EPSILON) * 100) / 100);
+
+        num = bondsData[i - age - 1] * (1 + 2 / 100) + 30000
+        bondsData.push(Math.round((num + Number.EPSILON) * 100) / 100);
+
+        num = cashData[i - age - 1] * (1 + 0 / 100)
+        cashData.push(Math.round((num + Number.EPSILON) * 100) / 100);
+    }
+    let startingNum;
+    for (let i = age + 1; i < age + 11; i++) {
+        startingNum = stocksData[i - age - 1] + bondsData[i - age - 1] + cashData[i - age - 1]
+        netWorthData.push(Math.round((num + Number.EPSILON) * 100) / 100);
+    }
+
 
     const fetchApi = async() => {
 
@@ -74,7 +101,6 @@ const MainScreen = ({navigation}) => {
             console.log(error.message);
         }
     }
-    const [annualSpending, setAnnualSpending] = React.useState('Annual Spending');
 
     return(
         <DismissKeyboard>
@@ -91,7 +117,7 @@ const MainScreen = ({navigation}) => {
                             ])
                         }
                         data={{
-                            labels: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
+                            labels: years,
                             datasets: [
                                 {
                                     data: stocksData,
@@ -147,7 +173,6 @@ const MainScreen = ({navigation}) => {
                             },
 
                         }}
-                        bezier
                         style={{
                             marginVertical: 8,
                             borderRadius: 16,
