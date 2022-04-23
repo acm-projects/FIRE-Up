@@ -12,13 +12,17 @@ db.once('open', () => console.log('Connected to Database'))
 
 app.use(express.json())
 
-const userRouter = require('./routes/userRoute')
-const moneyRouter = require('./routes/moneyRoute')
-app.use('/users', userRouter)
+const UserRouter = require('./routes/UserRoute')
+const moneyRouter = require('./routes/MoneyRoute')
+const ArticleRouter = require("./routes/ArticleRoute")
+app.use('/user', UserRouter)
 app.use('/money', moneyRouter)
+app.use('/article', ArticleRouter)
 
 app.get('/', (req, res) => {
     res.json({success: true, message: 'Backend JSON sent'});
 })
+=======
+
 
 app.listen(3000, () => console.log('Server Started'))
