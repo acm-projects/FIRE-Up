@@ -7,7 +7,7 @@ import Login from './../Screens/login'
 import SignUpPageOne from './../Screens/signUpPageOne'
 import SignUpPageTwo from './../Screens/signUpPageTwo'
 import SignUpPageThree from './../Screens/signUpPageThree'
-import SignUpPageFour from './../Screens/signUpPageFour'
+import UserRegistration from '../Screens/userRegistration'
 import MainScreen from "../Screens/mainScreen";
 import ArticlesScreen from "../Screens/articlesScreen";
 import StocksPage from "../Screens/stocksPage";
@@ -47,7 +47,7 @@ const RootStack = () => {
                 <Stack.Screen name="signUpPageOne" component={SignUpPageOne}/>
                 <Stack.Screen name="signUpPageTwo" component={SignUpPageTwo}/>
                 <Stack.Screen name="signUpPageThree" component={SignUpPageThree}/>
-                <Stack.Screen name="signUpPageFour" component={SignUpPageFour}/>
+                <Stack.Screen name="signUpPageFour" component={UserRegistration}/>
                 <Stack.Screen name="articlesScreen" component={ArticlesScreen}/>
                 <Stack.Screen name="stocksPage" component={StocksPage}/>
 

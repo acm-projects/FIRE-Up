@@ -5,7 +5,7 @@ import {
     styles
 } from './../Styles/styles'
 
-const SignUpPageFour = ({navigation}) => {
+const UserRegistration = ({navigation}) => {
     const [userName, setUserName] = React.useState('Email');
     const [password, setPassword] = React.useState('Password');
     var secureText = true;
@@ -32,4 +32,4 @@ const SignUpPageFour = ({navigation}) => {
     );
 }
 
-export default SignUpPageFour;
+export default UserRegistration;
