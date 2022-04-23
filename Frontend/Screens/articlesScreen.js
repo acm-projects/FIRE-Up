@@ -22,35 +22,29 @@ import {
 } from 'react-native-chart-kit';
 const articleCard = [
     {
-        title: "How to Live Your Best Life",
-        description: "Ever Wondered How to Life Your Life to the Fullest?",
+        title: "What is FI/RE?",
+        description: "By Kenneth Anttila",
         image: require("../assets/niagara_falls.jpeg"),
         id: 1,
     },
     {
-        title: "Here's How to Make That Trip Around The Globe A Reality",
+        title: "Splurging with Efficiency",
         description:
-            "From making the most out of logistics, to frugal tourism. This article says it all!",
+            "How to spend your money responsibly",
         image: require("../assets/rainforest.jpeg"),
         id: 2,
     },
     {
-        title: "Drink This Every Day to Extend Your Life!",
-        description: "How else would the lizard people live for centuries?",
+        title: "Investing 101",
+        description: "How to Win Big With The Stock Market!",
         image: require("../assets/minutemaid.jpg"),
         id: 3,
     },
     {
-        title: "Technology is Increasing at an Alarming Rate",
-        description: "Statistics state that the robot uprising is near",
+        title: "The Philosophy Behind FI/RE",
+        description: "How to become financially free",
         image: require("../assets/suggestiverobot.jpg"),
         id: 4,
-    },
-    {
-        title: "These are some things that the IRS don't want you to know!",
-        description: "Click here to read more",
-        image: require("../assets/condomclub.jpg"),
-        id: 5,
     },
 ];
 
