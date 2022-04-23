@@ -6,5 +6,5 @@
   "packagerNgrokUrl": "https://v4-vze.anonymous.frontend.exp.direct",
   "ngrokPid": 27236,
   "packagerPid": null,
-  "webpackServerPort": null
+  "webpackServerPort": 19006
 }
