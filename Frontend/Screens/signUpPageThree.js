@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet, View, TextInput, SafeAreaView, Button, Pressable, Dimensions, Alert, Image, ScrollView, } from 'react-native';
+import { NativeModules } from 'react-native-web';
 import logo from './../assets/FireUpLogo.png';
 import {
     styles
@@ -9,7 +10,6 @@ const SignUpPageThree = ({navigation}) => {
     const [stocks, setStocks] = React.useState('Amount in Savings Account');
     const [bonds, setBonds] = React.useState('Amount in Roth IRA');
     const [cash, setCash] = React.useState('Amount in 401K');
-
     const createTwoButtonAlert = () =>
         Alert.alert('Info', 'Enter your:\nAmount in your stocks account\nAmount in your Bonds\nEstimated Cash Assets', [
             { text: 'OK'},
@@ -45,6 +45,7 @@ const SignUpPageThree = ({navigation}) => {
             </View>
         </SafeAreaView>
     );
+    
 }
 
 export default SignUpPageThree;

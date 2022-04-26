@@ -14,6 +14,10 @@ import {
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import axios from "axios";
+
+
+
+
 const DismissKeyboard = ({ children }) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         {children}
@@ -21,76 +25,78 @@ const DismissKeyboard = ({ children }) => (
 );
 const MainScreen = ({navigation}) => {
     // This is the annual spending var after retirement | the default value should be the same as annual spending now from page 3
-    const [annualSpending, setAnnualSpending] = React.useState('Annual Spending');
-    let stocksStartingNum = Math.random() * 100000;
-    let bondsStartingNum = Math.random() * 100000;
-    let cashStartingNum = Math.random() * 100000;
+    const [annualSpending, setAnnualSpending] = React.useState(60000);
     const age = 17;
 
+
+    const updateData = (response) => {
+        try {
+            
+        }
+        catch {
+
+        }
+    }
+
+
+
+
+
+
+
+
+    // axios.get(`http://localhost:3000/money/6260baf00f13e5376d47f9e7`)
+    //     .then((response) => {
+    //       updateCardData(response);
+    //     })
     // These Arrays need to be populated
     const stocksData = [
-        stocksStartingNum=100000,
-        stocksStartingNum=120000,
-        stocksStartingNum=150000,
-        stocksStartingNum=115000,
-        stocksStartingNum=80000,
-        stocksStartingNum=160000,
-        stocksStartingNum=200000,
-        stocksStartingNum=250000,
+        100000
     ]
     const bondsData = [
-        bondsStartingNum=30000,
-        bondsStartingNum=30000,
-        bondsStartingNum=40000,
-        bondsStartingNum=30000,
-        bondsStartingNum=40000,
-        bondsStartingNum=50000,
-        bondsStartingNum=35000,
-        bondsStartingNum=30000,
+        30000
     ]
     const cashData = [
-        cashStartingNum=0,
-        cashStartingNum=5000,
-        cashStartingNum=10000,
-        cashStartingNum=10000,
-        cashStartingNum=15000,
-        cashStartingNum=30000,
-        cashStartingNum=40000,
-        cashStartingNum=50000,
+        50000
     ]
     const netWorthData = [
-        startingNum=130000,
-        startingNum=155000,
-        startingNum=200000,
-        startingNum=165000,
-        startingNum=135000,
-        startingNum=240000,
-        startingNum=275000,
-        startingNum=330000
+
     ]
     const years = [
 
     ]
+
+    const spendingBefore = 60000;
+    const annualIncome = 100000
+    const annualProfit = annualIncome - spendingBefore
+
     let num;
 
-    let startingYear = 2003;
-    for (let i = age + 1; i < age + 11; i++) {
+    let startingYear = 2022;
+    for (let i = age + 1; i < 99; i++) {
         years.push(startingYear++);
-        num = stocksData[i - age - 1] * (1 + 7 / 100) + 100000
+        num = stocksData[i - age - 1] * (1 + 7 / 100) + annualProfit
         stocksData.push(Math.round((num + Number.EPSILON) * 100) / 100);
 
-        num = bondsData[i - age - 1] * (1 + 2 / 100) + 30000
+        num = bondsData[i - age - 1] * (1 + 2 / 100)
         bondsData.push(Math.round((num + Number.EPSILON) * 100) / 100);
 
         num = cashData[i - age - 1] * (1 + 0 / 100)
         cashData.push(Math.round((num + Number.EPSILON) * 100) / 100);
     }
-    let startingNum;
-    for (let i = age + 1; i < age + 11; i++) {
-        startingNum = stocksData[i - age - 1] + bondsData[i - age - 1] + cashData[i - age - 1]
+
+    for (let i = age; i < 99; i++) {
+        num = stocksData[i - age] + bondsData[i - age] + cashData[i - age]
         netWorthData.push(Math.round((num + Number.EPSILON) * 100) / 100);
     }
 
+    let fiNum = 0
+
+    while (netWorthData[fiNum] < annualSpending * 25) {
+        fiNum++;
+    }
+
+    let startingNum = netWorthData[0];
 
     const fetchApi = async() => {
 
@@ -116,30 +122,36 @@ const MainScreen = ({navigation}) => {
                                 { text: 'OK'},
                             ])
                         }
+
+                        // case 1: fiNum < 10
+                        // slice 0, 10
+
+                        // case 2: fiNum >= 10 
+                        // slice from fiNum - 10, fiNum
                         data={{
-                            labels: years,
+                            labels: years.slice(Math.max(0, fiNum - 10), Math.max(10, fiNum)),
                             datasets: [
                                 {
-                                    data: stocksData,
+                                    data: stocksData.slice(Math.max(0, fiNum - 10), Math.max(10, fiNum)),
                                     color: () => `rgba(255, 182, 153, 0.75)`,
                                     legend: 'Stocks',
                                     strokeWidth: 5, // optional
                                 },
                                 {
-                                    data: bondsData,
+                                    data: bondsData.slice(Math.max(0, fiNum - 10), Math.max(10, fiNum)),
                                     color: () => `rgba(245, 104, 86, 0.75)`,
                                     strokeWidth: 5, // optional
                                     legend: 'Bonds'
 
                                 },
                                 {
-                                    data: cashData,
+                                    data: cashData.slice(Math.max(0, fiNum - 10), Math.max(10, fiNum)),
                                     color: () => `rgba(243, 60, 70, 0.75)`,
                                     strokeWidth: 5, // optional
                                     legend: 'Cash'
                                 },
                                 {
-                                    data: netWorthData,
+                                    data: netWorthData.slice(Math.max(0, fiNum - 10), Math.max(10, fiNum)),
                                     color: () => `rgba(0, 161, 82, 0.75)`,
                                     strokeWidth: 5, // optional
                                     legend: 'Net Worth'
@@ -182,7 +194,7 @@ const MainScreen = ({navigation}) => {
                     <View style={styles.outerView}>
                         <View style={styles.cardViewOne}>
                             <Text style={styles.boldText}>Years to Financial Independence:</Text>
-                            <Text style={styles.boldNum} >{15}</Text>
+                            <Text style={styles.boldNum} >{fiNum}</Text>
 
                         </View>
                         <View style={styles.cardViewTwo}>
